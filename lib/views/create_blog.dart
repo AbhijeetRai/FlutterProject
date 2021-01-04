@@ -82,8 +82,8 @@ class _CreateBlogState extends State<CreateBlog> {
         ),
         actions: <Widget>[
           GestureDetector( 
-            onTap: () {
-              uploadBlog(); 
+            onTap: ()async {
+              await uploadBlog(); 
             },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
@@ -104,8 +104,8 @@ class _CreateBlogState extends State<CreateBlog> {
               height: 10
             ),
             GestureDetector(
-              onTap: () {
-                getImage();
+              onTap: () async{
+                await getImage();
               }, 
               child: selectedImage != null
               ? Container(
