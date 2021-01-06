@@ -8,4 +8,8 @@ class CrudMethods {
       print(e); 
     });
   }
+
+  getData() async {
+    return await Firestore.instance.collection("blogs").getDocuments();
+  }
 }

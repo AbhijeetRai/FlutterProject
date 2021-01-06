@@ -18,7 +18,7 @@ class _CreateBlogState extends State<CreateBlog> {
 
   File selectedImage;
   bool _isLoading = false;
-  CrudMethods crudMethods = new CrudMethods();
+  CrudMethods crudMethods = new CrudMethods(); 
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -52,7 +52,17 @@ class _CreateBlogState extends State<CreateBlog> {
         }
 
         print(imageUrl);
-        Navigator.pop(context);
+
+        Map<String, String> blogMap = {
+          "imgUrl": imageUrl,
+          "authorName": authorName,
+          "title": title,
+          "desc": desc,
+        };
+
+        crudMethods.addData(blogMap).then((result) {
+          Navigator.pop(context);
+        }); 
       });
 
     } else {
@@ -93,7 +103,7 @@ class _CreateBlogState extends State<CreateBlog> {
         ],
       ),
       body: _isLoading 
-      ? Container(
+      ? Container( 
         alignment: Alignment.center,
         child: CircularProgressIndicator(), 
       ) 
